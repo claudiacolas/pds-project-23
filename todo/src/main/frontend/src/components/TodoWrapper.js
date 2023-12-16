@@ -20,10 +20,16 @@ export const TodoWrapper = () => {
         }
     }
 
-    const addTodo = (title, description) => {
-        setTodos([...todos, {id: uuidv4(), title: title, description: description, completed: false, isEditing: false}])
-        console.log(todos)
-    }
+    const addTodo = async (title, description) => {
+        try {
+            await api.post("/api/v1/todos", { title, description });
+            const response = await api.get("/api/v1/todos");
+            setTodos(response.data);
+        } catch (err) {
+            console.log(err);
+        }
+    };
+    
 
     const toggleComplete = id  => {
         setTodos(todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo))

@@ -6,6 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @RestController
@@ -37,12 +38,13 @@ public class TodoController {
 
     // Create a new todo
     @PostMapping
-    public ResponseEntity<Todo> CreateTodo(@PathVariable String title){
-        var item = new Todo();
-        item.title = title;
-        todoRepository.save(item);
-        return ResponseEntity.status(HttpStatus.CREATED).body(item);
+    public ResponseEntity<Todo> createTodo(@RequestBody Todo todo){
+        todo.setCompleted(false); // Default value for completed
+        todo.setCreated(LocalDateTime.now()); // Set creation time
+        todoRepository.save(todo);
+        return ResponseEntity.status(HttpStatus.CREATED).body(todo);
     }
+
 
     // Update a todo by ID
     @PutMapping("/{id}")

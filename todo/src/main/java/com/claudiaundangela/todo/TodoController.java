@@ -48,15 +48,18 @@ public class TodoController {
 
     // Update a todo by ID
     @PutMapping("/{id}")
-    ResponseEntity<Todo> UpdateTodo(@PathVariable String id, @PathVariable String title){
+    ResponseEntity<Todo> updateTodo(@PathVariable String id, @RequestBody Todo updatedTodo) {
         Todo existingItem = todoRepository.findById(id).orElse(null);
         if (existingItem != null) {
-            existingItem.title = title;
+            existingItem.setTitle(updatedTodo.getTitle());
+            existingItem.setDescription(updatedTodo.getDescription());
+            existingItem.setCompleted(updatedTodo.getCompleted());
             todoRepository.save(existingItem);
             return ResponseEntity.status(HttpStatus.OK).body(existingItem);
         }
         return ResponseEntity.notFound().build();
     }
+
 
     // Delete a todo by ID
     @DeleteMapping("/{id}")

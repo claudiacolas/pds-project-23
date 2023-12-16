@@ -30,22 +30,56 @@ export const TodoWrapper = () => {
         }
     };
     
+    const toggleComplete = async (id) => {
+        try {
+          const todoToUpdate = todos.find((todo) => todo.id === id);
+          const updatedTodo = {
+            ...todoToUpdate,
+            completed: !todoToUpdate.completed,
+          };
+      
+          const updatedTodos = todos.map((todo) =>
+            todo.id === id ? updatedTodo : todo
+          );
+      
+          setTodos(updatedTodos);
+          await api.put(`/api/v1/todos/${id}`, updatedTodo);
+        } catch (err) {
+          console.log(err);
+        }
+    };
+      
+    const deleteTodo = async (id) => {
+        try {
+          await api.delete(`/api/v1/todos/${id}`);
+          setTodos(todos.filter((todo) => todo.id !== id));
+        } catch (err) {
+          console.log(err);
+        }
+    };
 
-    const toggleComplete = id  => {
-        setTodos(todos.map(todo => todo.id === id ? {...todo, completed: !todo.completed} : todo))
-    }
-
-    const deleteTodo = id => {
-        setTodos(todos.filter(todo => todo.id !== id))
-    }
-
-    const editTodo = id => {
-        setTodos(todos.map(todo => todo.id === id ? {...todo, isEditing: !todo.isEditing} : todo))
-    }
-
-    const editTask = (title, description, id) => {
-        setTodos(todos.map(todo => todo.id === id ? {...todo, title, description, isEditing: !todo.isEditing} : todo))
-    }
+    const editTodo = async (id) => {
+        try {
+          const updatedTodos = todos.map((todo) =>
+            todo.id === id ? { ...todo, isEditing: !todo.isEditing } : todo
+          );
+          setTodos(updatedTodos);
+        } catch (err) {
+          console.log(err);
+        }
+    };
+      
+      const editTask = async (title, description, id) => {
+        try {
+          const updatedTodos = todos.map((todo) =>
+            todo.id === id ? { ...todo, title, description, isEditing: !todo.isEditing } : todo
+          );
+          setTodos(updatedTodos);
+          await api.put(`/api/v1/todos/${id}`, { title, description });
+        } catch (err) {
+          console.log(err);
+        }
+    };
 
     useEffect(() => {
         getTodos();

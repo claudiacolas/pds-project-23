@@ -31,9 +31,7 @@ export const EditTodoForm = ({ editTodo, task }) => {
                 />
             </div>
           </div>
-            <button type='submit' className='todo-btn'>
-                Update task
-            </button>
+            <button type='submit' className='todo-btn'>Update task</button>
         </form>
     );
 };

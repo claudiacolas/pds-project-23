@@ -1,20 +1,39 @@
 import React, {useState} from 'react'
 
-export const TodoForm = ({addTodo}) => {
+export const TodoForm = ({ addTodo }) => {
 
-    const [value, setValue] = useState("")
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
-    const handleSubmit = e => {
-        e.preventDefault();
-        addTodo(value);
-        setValue("")
-    }
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    addTodo(title, description);
+    setTitle('');
+    setDescription('');
+  };
 
-    return (
-        <form className='TodoForm' onSubmit={handleSubmit}>
-            <input type="text" className='todo-input' value={value} placeholder='What is the task to do?' onChange=
-            {(e) => setValue(e.target.value)}/>
-            <button type='submit' className='todo-btn'>Add task</button>
-        </form>
-    )
-}
+  return (
+      <form className="TodoForm" onSubmit={handleSubmit}>
+        <div className="input-container">
+          <input
+            type="text"
+            className="todo-input"
+            value={title}
+            placeholder="Title"
+            onChange={(e) => setTitle(e.target.value)}
+          />
+          <div className="description-container">
+            <textarea
+              className="description-input"
+              value={description}
+              placeholder="Description"
+              onChange={(e) => setDescription(e.target.value)}
+            />
+          </div>
+        </div>
+        <button type="submit" className="todo-btn" style={{ width: '100%' }}>
+          Add task
+        </button>
+      </form>
+    );
+};

@@ -1,5 +1,7 @@
 version: "3.8"
+
 services:
+
   mongodb:
     image: mongo
     container_name: mongodb
@@ -10,6 +12,7 @@ services:
     environment:
       - MONGO_INITDB_ROOT_USERNAME=rootuser
       - MONGO_INITDB_ROOT_PASSWORD=rootpass
+
   mongo-express:
     image: mongo-express
     container_name: mongo-express
@@ -20,10 +23,11 @@ services:
       - ME_CONFIG_MONGODB_ADMINUSERNAME=rootuser
       - ME_CONFIG_MONGODB_ADMINPASSWORD=rootpass
       - ME_CONFIG_MONGODB_SERVER=mongodb
+
   spring-app:
     image: test-java:v0.1
     build:
-      context: .
+      context: ./todo/
       dockerfile: Dockerfile
     container_name: your-spring-app-container
     ports:
@@ -31,10 +35,29 @@ services:
     depends_on:
       - mongodb
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://rootuser:rootpass@mongodb:27017/todoapp
-      SPRING_DATA_MONGODB_DATABASE: todoapp
-      SPRING_DATA_MONGODB_USERNAME: rootuser
-      SPRING_DATA_MONGODB_PASSWORD: rootpass
+      - SPRING_DATA_MONGODB_URI=mongodb://rootuser:rootpass@mongodb:27017/todoapp
+      - SPRING_DATA_MONGODB_DATABASE=todoapp
+      - SPRING_DATA_MONGODB_USERNAME=rootuser
+      - SPRING_DATA_MONGODB_PASSWORD=rootpass
+      
+  frontend:
+    container_name: frontend
+    build:
+      context: ./frontend/
+      dockerfile: Dockerfile
+    image: img-frontend
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    depends_on:
+      - spring-app
+
+  jaeger:
+    container_name: jaeger
+    image: jaegertracing/all-in-one:latest
+    restart: always
+    ports:
+      - "16686:16686"
 
 volumes:
   data: { }

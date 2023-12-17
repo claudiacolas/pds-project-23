@@ -1,0 +1,8 @@
+FROM mongo:latest
+
+ENV MONGO_INITDB_ROOT_USERNAME=rootuser
+ENV MONGO_INITDB_ROOT_PASSWORD=rootpass
+
+VOLUME /data/db
+
+EXPOSE 27017

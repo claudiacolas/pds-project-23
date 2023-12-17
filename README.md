@@ -83,5 +83,12 @@ You can configure the application by modifying the application properties or con
 
 ## Usage
 
-Explain how users can interact with the application, including API endpoints and any frontend functionality.
+To run the application and its associated MondoDB database using Docker Compose, follow these steps:
 
+1. Clone this repository to your local machine.
+2. Make sure you have Docker and Docker Compose installed.
+3. Navigate to the root directory of the cloned repository where the `docker-compose.yml` file is located.
+4. Open a terminal or command prompt.
+5. Run the following command to start the services defined in the `docker-compose.yml` file:
+       docker-compose up -d
+6. Use your preferred API client (e.g., Postman, curl) to interact with the API endpoints as described in the documentation.

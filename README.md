@@ -22,8 +22,6 @@ The project is organized as follows:
   - `todo`: Backend source code
       - `database`: Database dockerfile
       - `src`: Source code
-        -`main`: Main application code
-        -`test`: Test code
       - `target`: Build artifacts
   - `frontend`: Frontend source code
 

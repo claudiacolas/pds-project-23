@@ -22,8 +22,8 @@ The project is organized as follows:
   - `todo`: Backend source code
       - `database`: Database dockerfile
       - `src`: Source code
-          -`main`: Main application code
-          -`test`: Test code
+        -`main`: Main application code
+        -`test`: Test code
       - `target`: Build artifacts
   - `frontend`: Frontend source code
 
@@ -85,5 +85,5 @@ To run the application, follow these steps:
 2. Build and run the project using a Java IDE or the command line.
 3. Navigate to the root directory of the cloned repository where the `docker-compose.yaml` file is located.
 4. Open a terminal or command prompt.
-5. Run the following command to start the services defined in the `docker-compose.yaml` file:
+5. Run the following command to start the services:
        `docker-compose up -d`

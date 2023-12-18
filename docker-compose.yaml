@@ -39,7 +39,6 @@ services:
     depends_on:
       - mongodb
     environment:
-      #SPRING_DATA_MONGODB_URI: mongodb://rootuser:rootpass@mongodb:27017/todoapp
       SPRING_DATA_MONGODB_HOST: mongodb
       SPRING_DATA_MONGODB_DATABASE: todoapp
       SPRING_DATA_MONGODB_USERNAME: rootuser

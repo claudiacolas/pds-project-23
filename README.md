@@ -77,19 +77,13 @@ The application uses a data model for TODO items with the following attributes:
 - MongoDB database running on port: `8081`
 - JaegerUI running on port: `16686`
 
-## Running the Application
+## Usage
 
 To run the application, follow these steps:
 
 1. Clone this repository to your local machine.
 2. Build and run the project using a Java IDE or the command line.
-
-## Usage
-
-To run the application and its associated MondoDB database using Docker Compose, follow these steps:
-
-1. Clone this repository to your local machine.
-2. Navigate to the root directory of the cloned repository where the `docker-compose.yaml` file is located.
-3. Open a terminal or command prompt.
-4. Run the following command to start the services defined in the `docker-compose.yaml` file:
-       docker-compose up -d
+3. Navigate to the root directory of the cloned repository where the `docker-compose.yaml` file is located.
+4. Open a terminal or command prompt.
+5. Run the following command to start the services defined in the `docker-compose.yaml` file:
+       `docker-compose up -d`

@@ -39,10 +39,13 @@ services:
     depends_on:
       - mongodb
     environment:
-      SPRING_DATA_MONGODB_URI: mongodb://rootuser:rootpass@mongodb:27017/todoapp
+      #SPRING_DATA_MONGODB_URI: mongodb://rootuser:rootpass@mongodb:27017/todoapp
+      SPRING_DATA_MONGODB_HOST: mongodb
       SPRING_DATA_MONGODB_DATABASE: todoapp
       SPRING_DATA_MONGODB_USERNAME: rootuser
       SPRING_DATA_MONGODB_PASSWORD: rootpass
+      SPRING_DATA_MONGODB_AUTHENTICATION-DATABASE: admin
+      SPRING_DATA_MONGODB_PORT: 27017
       OTEL_SERVICE_NAME: spring-app
       OTEL_TRACES_EXPORTER: jaeger
       OTEL_METRICS_EXPORTER: none

@@ -1,5 +1,6 @@
+com/claudiaundangela/todo/TodoRepository.class
+com/claudiaundangela/todo/Todo.class
 com/claudiaundangela/todo/TodoService.class
 com/claudiaundangela/todo/TodoController.class
 com/claudiaundangela/todo/TodoApplication.class
-com/claudiaundangela/todo/TodoRepository.class
-com/claudiaundangela/todo/Todo.class
+com/claudiaundangela/todo/config/WebConfig.class

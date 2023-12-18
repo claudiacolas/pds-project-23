@@ -35,10 +35,14 @@ services:
     depends_on:
       - mongodb
     environment:
-      - SPRING_DATA_MONGODB_URI=mongodb://rootuser:rootpass@mongodb:27017/todoapp
-      - SPRING_DATA_MONGODB_DATABASE=todoapp
-      - SPRING_DATA_MONGODB_USERNAME=rootuser
-      - SPRING_DATA_MONGODB_PASSWORD=rootpass
+      SPRING_DATA_MONGODB_URI: mongodb://rootuser:rootpass@mongodb:27017/todoapp
+      SPRING_DATA_MONGODB_DATABASE: todoapp
+      SPRING_DATA_MONGODB_USERNAME: rootuser
+      SPRING_DATA_MONGODB_PASSWORD: rootpass
+      OTEL_SERVICE_NAME: spring-app
+      OTEL_TRACES_EXPORTER: jaeger
+      OTEL_METRICS_EXPORTER: none
+      OTEL_EXPORTER_JAEGER_ENDPOINT: http://jaeger:14250
       
   frontend:
     container_name: frontend
@@ -58,6 +62,7 @@ services:
     restart: always
     ports:
       - "16686:16686"
+      - "14250:14250"
 
 volumes:
   data: { }

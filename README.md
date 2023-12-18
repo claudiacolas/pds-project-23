@@ -10,21 +10,20 @@ Before running the application, ensure that you have the following prerequisites
 
 - [Java Development Kit (JDK)](link-to-jdk)
 - [Spring Boot framework](https://spring.io/projects/spring-boot)
-- [A database](database-link) (e.g., MongoDB)
 - [Docker](https://www.docker.com/) for containerization
 
 ## Project Structure
 
 The project is organized as follows:
 
-- `todo`: Root directory
-  - `src`: Source code
-    - `main`: Main application code
-      - `frontend`: Frontend source code (if applicable)
-      - `java`: Backend source code
-      - `resources`: Backend configuration files
-    - `test`: Test code
-  - `target`: Build artifacts
+- `pds-project-23`: Root directory
+  - `todo`: Backend source code
+      - `database`: Database dockerfile
+      - `src`: Source code
+          -`main`: Main application code
+          -`test`: Test code
+      - `target`: Build artifacts
+  - `frontend`: Frontend source code
 
 ## Backend API
 
@@ -77,18 +76,12 @@ To run the application, follow these steps:
 1. Clone this repository to your local machine.
 2. Build and run the project using a Java IDE or the command line.
 
-### Configuration
-
-You can configure the application by modifying the application properties or configuration files as needed.
-
 ## Usage
 
 To run the application and its associated MondoDB database using Docker Compose, follow these steps:
 
 1. Clone this repository to your local machine.
-2. Make sure you have Docker and Docker Compose installed.
-3. Navigate to the root directory of the cloned repository where the `docker-compose.yml` file is located.
-4. Open a terminal or command prompt.
-5. Run the following command to start the services defined in the `docker-compose.yml` file:
+2. Navigate to the root directory of the cloned repository where the `docker-compose.yaml` file is located.
+3. Open a terminal or command prompt.
+4. Run the following command to start the services defined in the `docker-compose.yaml` file:
        docker-compose up -d
-6. Use your preferred API client (e.g., Postman, curl) to interact with the API endpoints as described in the documentation.

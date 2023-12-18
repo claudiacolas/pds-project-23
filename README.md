@@ -2,7 +2,9 @@
 
 ## Overview
 
-This repository contains the source code for a parallel and distributed systems project developed at Hochschule Esslingen. The project incorporates a Spring Boot backend, MongoDB for the database, and a React frontend. Docker is used for containerization.
+This repository contains the source code for a parallel and distributed systems project developed at Hochschule Esslingen. 
+The project is a Todo Application which allows you to manage your daily tasks. 
+It incorporates a Spring Boot backend, MongoDB for the database, a React frontend and Docker is used for containerization. It also incorporates OpenTelemetry and Jaeger for observability.
 
 ## Prerequisites
 
@@ -68,6 +70,12 @@ The application uses a data model for TODO items with the following attributes:
 - `description` (String): Additional details about the TODO item.
 - `completed` (Boolean): Indicates whether the TODO item is completed.
 - `created` (LocalDateTime): The date and time when the TODO item was created.
+
+## Application Configuration
+- Backend running on port: 8080
+- Frontend running on port: 3000
+- PostgreSQL database running on port: 8081
+- JaegerUI running on port: 16686
 
 ## Running the Application
 

@@ -72,10 +72,10 @@ The application uses a data model for TODO items with the following attributes:
 - `created` (LocalDateTime): The date and time when the TODO item was created.
 
 ## Application Configuration
-- Backend running on port: 8080
-- Frontend running on port: 3000
-- PostgreSQL database running on port: 8081
-- JaegerUI running on port: 16686
+- Backend running on port: `8080`
+- Frontend running on port: `3000`
+- MongoDB database running on port: `8081`
+- JaegerUI running on port: `16686`
 
 ## Running the Application
 
